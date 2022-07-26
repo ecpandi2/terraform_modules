@@ -19,7 +19,7 @@ resource "kubernetes_service_v1" "mysql_clusterip_service" {
 # Resource: Kubernetes Service Manifest (Type: Load Balancer - Network)
 resource "kubernetes_service_v1" "application_lb_service" {
   metadata {
-    name = "usermgmt-webapp-network-lb-service"
+    name = "usermgmt-webapp-application-lb-service"
     annotations = {
       "service.beta.kubernetes.io/aws-load-balancer-type" = "alb"    # To create Network Load Balancer
     }
