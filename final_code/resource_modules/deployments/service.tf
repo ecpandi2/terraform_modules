@@ -16,12 +16,13 @@ resource "kubernetes_service_v1" "mysql_clusterip_service" {
   }
 }
 
-# Resource: Kubernetes Service Manifest (Type: Load Balancer - Network)
-resource "kubernetes_service_v1" "application_lb_service" {
+
+# Kubernetes Service Manifest (Type: Node Port Service)
+resource "kubernetes_service_v1" "myapp_np_service" {
   metadata {
-    name = "usermgmt-webapp-application-lb-service"
+    name = "app1-nginx-nodeport-service"
     annotations = {
-      "service.beta.kubernetes.io/aws-load-balancer-type" = "alb"    # To create Network Load Balancer
+      "alb.ingress.kubernetes.io/healthcheck-path" = "/index.html"
     }
   }
   spec {
@@ -29,9 +30,10 @@ resource "kubernetes_service_v1" "application_lb_service" {
       app = kubernetes_deployment_v1.usermgmt_webapp.spec.0.selector.0.match_labels.app
     }
     port {
+      name        = "http"
       port        = 80
-      target_port = 8080
+      target_port = 80
     }
-    type = "LoadBalancer"
+    type = "NodePort"
   }
 }
