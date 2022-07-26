@@ -17,23 +17,22 @@ resource "kubernetes_service_v1" "mysql_clusterip_service" {
 }
 
 
-# Kubernetes Service Manifest (Type: Node Port Service)
-resource "kubernetes_service_v1" "myapp_np_service" {
+# Resource: Kubernetes Service Manifest (Type: NodePort)
+resource "kubernetes_service_v1" "nodeport_service" {
   metadata {
-    name = "app1-nginx-nodeport-service"
-    annotations = {
-      "alb.ingress.kubernetes.io/healthcheck-path" = "/index.html"
-    }
+    name = "usermgmt-webapp-nodeport-service"
   }
   spec {
     selector = {
       app = kubernetes_deployment_v1.usermgmt_webapp.spec.0.selector.0.match_labels.app
     }
     port {
-      name        = "http"
       port        = 80
-      target_port = 80
+      target_port = 8080
+      node_port = 31280
     }
+
     type = "NodePort"
   }
 }
+

@@ -33,7 +33,7 @@ resource "kubernetes_ingress_v1" "ingress" {
     ingress_class_name = "my-aws-ingress-class" # Ingress Class            
     default_backend {
       service {
-        name = kubernetes_service_v1.myapp_np_service.metadata[0].name
+        name = kubernetes_service_v1.nodeport_service.metadata[0].name
         port {
           number = 80
         }
