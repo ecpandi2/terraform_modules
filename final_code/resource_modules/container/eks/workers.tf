@@ -295,6 +295,7 @@ resource "aws_launch_configuration" "workers" {
     aws_iam_role_policy_attachment.workers_AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.workers_AmazonEC2ContainerRegistryReadOnly,
     aws_iam_role_policy_attachment.workers_additional_policies,
+    aws_iam_role_policy_attachment.eks_cloudwatch_container_insights,
     aws_eks_cluster.this,
     kubernetes_config_map.aws_auth
   ]
@@ -455,4 +456,10 @@ resource "aws_iam_role_policy_attachment" "workers_additional_policies" {
   count      = var.manage_worker_iam_resources && var.create_eks ? length(var.workers_additional_policies) : 0
   role       = aws_iam_role.workers[0].name
   policy_arn = var.workers_additional_policies[count.index]
+}
+
+resource "aws_iam_role_policy_attachment" "eks_cloudwatch_container_insights" {
+  count      = var.manage_worker_iam_resources && var.create_eks ? 1 : 0
+  policy_arn = "${local.policy_arn_prefix}/CloudWatchAgentServerPolicy"
+  role       = aws_iam_role.workers[0].name
 }
