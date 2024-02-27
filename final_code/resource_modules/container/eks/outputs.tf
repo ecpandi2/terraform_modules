@@ -181,7 +181,7 @@ output "aws_account_id" {
 }
 
 output "ebs_csi_iam_policy" {
-  value = data.http.ebs_csi_iam_policy.body
+  value = data.http.ebs_csi_iam_policy.response_body
 }
 
 output "ebs_csi_iam_role_arn" {
@@ -196,7 +196,7 @@ output "ebs_csi_helm_metadata" {
 }
 
 output "lbc_iam_policy" {
-  value = data.http.lbc_iam_policy.body
+  value = data.http.lbc_iam_policy.response_body
 }
 
 output "lbc_iam_policy_arn" {

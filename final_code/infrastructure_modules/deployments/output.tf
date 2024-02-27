@@ -3,5 +3,5 @@ output "aws_account_id" {
 }
 
 output "ebs_csi_iam_policy" {
-  value = data.http.ebs_csi_iam_policy.body
+  value = data.http.ebs_csi_iam_policy.response_body
 }

@@ -184,7 +184,7 @@ resource "aws_iam_policy" "ebs_csi_iam_policy" {
   name        = "${local.name}-AmazonEKS_EBS_CSI_Driver_Policy"
   path        = "/"
   description = "EBS CSI IAM Policy"
-  policy = data.http.ebs_csi_iam_policy.body
+  policy = data.http.ebs_csi_iam_policy.response_body
 }
 
 locals {
@@ -278,7 +278,7 @@ resource "aws_iam_policy" "lbc_iam_policy" {
   name        = "AWSLoadBalancerControllerIAMPolicy"
   path        = "/"
   description = "AWS Load Balancer Controller IAM Policy"
-  policy = data.http.lbc_iam_policy.body
+  policy = data.http.lbc_iam_policy.response_body
 }
 
 resource "aws_iam_role" "lbc_iam_role" {

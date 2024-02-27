@@ -26,7 +26,7 @@ resource "kubernetes_ingress_v1" "ingress" {
       # SSL Redirect Setting
       "alb.ingress.kubernetes.io/ssl-redirect" = 443
       # External DNS - For creating a Record Set in Route53
-      "external-dns.alpha.kubernetes.io/hostname" = "tfdnstest901.cmcloudlab889.info, tfdnstest902.cmcloudlab889.info"
+      "external-dns.alpha.kubernetes.io/hostname" = "tfdnstest901.175189267104.realhandsonlabs.net, tfdnstest902.175189267104.realhandsonlabs.net"
     }    
   }
   spec {

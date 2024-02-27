@@ -1,6 +1,6 @@
 # Resource: ACM Certificate
 resource "aws_acm_certificate" "acm_cert" {
-  domain_name       = "*.cmcloudlab889.info"
+  domain_name       = "*.175189267104.realhandsonlabs.net"
   validation_method = "DNS"
 
   tags = {
