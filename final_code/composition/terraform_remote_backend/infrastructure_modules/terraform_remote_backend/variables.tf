@@ -65,12 +65,17 @@ variable "restrict_public_buckets" {
 ########################################
 variable "read_capacity" {
   description = "The number of read units for this table."
-  type = string
+#  type = string
+  type = number
+  default = 5
+
 }
 
 variable "write_capacity" {
   description = "The number of write units for this table."
-  type = string
+#  type = string
+  type = number
+  default = 5
 }
 
 variable "hash_key" {

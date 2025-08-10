@@ -26,6 +26,7 @@ module "terraform_remote_backend" {
   ## DynamoDB
   ########################################
   read_capacity  = var.read_capacity
+#  billing_mode   = "PROVISIONED"
   write_capacity = var.write_capacity
   hash_key       = var.hash_key
   attribute_name = var.attribute_name

@@ -1,7 +1,7 @@
 # used to append random integer to S3 bucket to avoid conflicting bucket name across the globe
 resource "random_integer" "digits" {
-  min = 1
-  max = 100
+  min = 100
+  max = 200
 
   keepers = {
     # Generate a new integer each time s3_bucket_name value gets updated

@@ -9,26 +9,26 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5"
     alb.ingress.kubernetes.io/healthy-threshold-count: "2"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443},{"HTTP":80}]'
-    alb.ingress.kubernetes.io/load-balancer-name: ingress-splunk
+    alb.ingress.kubernetes.io/load-balancer-name: ingress-grafana
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/ssl-redirect: "443"
     alb.ingress.kubernetes.io/success-codes: "200"
     alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
-    external-dns.alpha.kubernetes.io/hostname: "splunk1.058568287484.realhandsonlabs.net, splunk2.058568287484.realhandsonlabs.net"
+    external-dns.alpha.kubernetes.io/hostname: "grafana1.058568287484.realhandsonlabs.net, grafana2.058568287484.realhandsonlabs.net"
   creationTimestamp: "2024-02-24T00:14:17Z"
   finalizers:
   - ingress.k8s.aws/resources
   generation: 1
-  name: ingress-splunk
+  name: ingress-grafana
   namespace: default
   resourceVersion: "1956"
   uid: 9c2bc0b0-b343-4b8c-a464-261c48c33fda
 spec:
   defaultBackend:
     service:
-      name: splunk
+      name: grafana-stack
       port:
-        number: 8000
+        number: 80
   ingressClassName: my-aws-ingress-class
 status:
   loadBalancer: {}
